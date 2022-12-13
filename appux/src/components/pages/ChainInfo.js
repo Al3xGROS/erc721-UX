@@ -1,8 +1,11 @@
-import {useState, useEffect} from 'react';
+import { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 import Web3 from 'web3';
 
 
+
 function ChainInfo() {
+    const navigate = useNavigate();
 
     const [isConnected, setIsConnected] = useState(false);
     const [chainId, setChainId] = useState("");
@@ -29,7 +32,7 @@ function ChainInfo() {
                 await currentProvider.request({method: 'eth_requestAccounts'})
                 const web3 = new Web3(currentProvider);
                 let chainId = await web3.eth.getChainId();
-                if (chainId != 11155111) {
+                if (chainId !== 11155111) {
                     window.open("/error404", "_self");
                 }
                 let lastBlockNumber = await web3.eth.getBlockNumber();
@@ -52,17 +55,26 @@ function ChainInfo() {
 
     return (
         <div className="page">
+            <div className="page_navbar">
+                <button className="navbar_button" onClick={() => navigate("/")}>Home</button>
+                <button className="navbar_button" onClick={() => navigate("/chain-info")}>ChainInfo</button>
+                <button className="navbar_button" onClick={() => navigate("/fakeBayc")}>FakeBayc</button>
+                <button className="navbar_button" onClick={() => navigate("/fakeNefturians")}>FakeNefturians</button>
+                <button className="navbar_button" onClick={() => navigate("/fakeMeebits")}>FakeMeebits</button>
+            </div>
             <div className="page_header">
-                <h1>Here connect to your metamask</h1>
+                <h1>Chain Info Page</h1>
             </div>
             <div className="page_body">
+                <p>Click here to connect to your metamask</p>
                 {!isConnected && (
                     <button className="page_button" onClick={onConnect}>Connect</button>
                 )}
             </div>
             {isConnected && (
                 <div className="page_body">
-                    <h2>You are connected to Metamask</h2>
+                    <p>Here are the Infos :</p>
+                    <br/>
                     <span>Chain Id : </span> {chainId}
                     <br/>
                     <span>Last Block Number : </span> {lastBlockNumber}

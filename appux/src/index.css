@@ -5,26 +5,38 @@ body {
 
 
 .page {
-  background-color: aqua;
+  background: linear-gradient( #4831D4, #CCF381);
   width: 100%;
   position: relative;
-  height: 100vh;
+  min-height: 100vh;
+  height: fit-content;
+}
+
+.page_navbar {
+  /* background-color: #CCF381; */
+  width: 100%;
+  height: fit-content;
+  display: inline-flex;
 }
 
 .page_header {
   /* background-color: coral; */
   text-align: center;
+  color: #FBEAEB;
   padding: 10px 10px 10px 10px;
 }
 
 .page_body {
   /* background-color: chartreuse; */
   padding: 10px 10px 10px 10px;
+  color: #FBEAEB;
   text-align: center;
+  height: fit-content;
 }
 
 .page_button {
-  background-color: blueviolet;
+  background-color: #4831D4;
+  color:#FBEAEB;
   margin-top: 10px;
   margin-bottom: 10px;
   width: 200px;
@@ -33,4 +45,43 @@ body {
   text-align: center;
   margin-right: auto;
   margin-left: auto;
+  cursor: pointer;
 }
+
+.navbar_button {
+  background-color: #CCF381;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 200px;
+  height: 25px;
+  border-radius: 10px;
+  text-align: center;
+  margin-right: auto;
+  margin-left: auto;
+  cursor: pointer;
+}
+
+.attributes_table {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 1em;
+  overflow: hidden;
+}
+
+.attributes_table, td, th {
+  border: 1px solid #CCF381;
+  padding: 8px;
+}
+
+th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: #CCF381;
+  color: #4831D4;
+}
+
+
