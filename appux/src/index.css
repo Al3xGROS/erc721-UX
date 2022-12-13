@@ -15,12 +15,12 @@ body {
 .page_navbar {
   /* background-color: #CCF381; */
   width: 100%;
-  height: fit-content;
+  height: 4vh;
   display: inline-flex;
 }
 
 .page_header {
-  /* background-color: coral; */
+  height: 4vh;
   text-align: center;
   color: #FBEAEB;
   padding: 10px 10px 10px 10px;
@@ -69,6 +69,7 @@ body {
   margin-right: auto;
   border-radius: 1em;
   overflow: hidden;
+  height: 32vh;
 }
 
 .attributes_table, td, th {
@@ -82,6 +83,11 @@ th {
   text-align: center;
   background-color: #CCF381;
   color: #4831D4;
+}
+
+.image_nft {
+  width: auto;
+  height: calc(60vh - 100px);
 }
 
 

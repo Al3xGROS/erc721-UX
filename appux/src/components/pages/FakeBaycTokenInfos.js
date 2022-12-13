@@ -62,7 +62,6 @@ function FakeBaycTokenInfos() {
                 <h1>Fake Bayc Token Info</h1>
             </div>
             <div className="page_body">
-                <p>Token Id: {tokenId}</p>
                 {!isAccessible && (
                     <button className="page_button" onClick={getTokenInfos}>Get Token's Infos</button>
                 )}
@@ -80,10 +79,9 @@ function FakeBaycTokenInfos() {
                                 {attributes}
                             </tbody>
                         </table>
-                        <br/>
-                        <br/>
+                        <br/> 
                         <>
-                            <IpfsImage hash={image}/>
+                            <IpfsImage hash={image} className="image_nft"/>
                         </>
                     </div>
                 )}
