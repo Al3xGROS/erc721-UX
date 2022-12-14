@@ -1,4 +1,4 @@
-import { Link, useParams, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Web3 from 'web3';
 import NFTContract from '../contractJson/fakeNefturians.json';

@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import Web3 from 'web3'
 import { Link } from "react-router-dom";
 import NFTContract from '../contractJson/fakeBayc.json';

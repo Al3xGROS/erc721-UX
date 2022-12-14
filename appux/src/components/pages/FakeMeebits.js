@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import Web3 from 'web3'
-import { useNavigate } from "react-router-dom";
-// import NFTContract1 from "../contractJson/fakeMeebits.json";
 import NFTContract from "../contractJson/fakeMeebitsClaimer.json";
 import sig from "../contractJson/signatures.json";
 import Navbar from '../Navbar';
@@ -48,12 +46,6 @@ function FakeMeebits() {
             <div className="page_body">
                 <br/>
                 <br/>
-                {/* <div className="page_block">
-                    <label>Chose the token you want to check</label>
-                    <input type="number" min="0" onChange={e => change(e)}></input>
-                    <br/>
-                    <button className="page_button" onClick={checkToken}>Check token</button>
-                </div> */}
                 <label>Chose the token you want to claim</label>
                 <br/>
                 <br/>

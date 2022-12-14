@@ -1,4 +1,4 @@
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Web3 from 'web3';
 import NFTContract from '../contractJson/fakeBayc.json';
@@ -24,7 +24,7 @@ function FakeBaycTokenInfos() {
     var contract = new web3.eth.Contract(abi, address);
 
     async function getTokenInfos() {
-        if (tokenId >= await contract.methods.tokenCounter().call()) {
+        if (tokenId >= parseInt(await contract.methods.tokenCounter().call())) {
             alert("Token does not exist idiot!");
             console.log("Token out of bounds");
         } else {
