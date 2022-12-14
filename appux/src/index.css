@@ -61,10 +61,10 @@ body {
   cursor: pointer;
 }
 
-.attributes_table {
+.table_token {
   font-family: Arial, Helvetica, sans-serif;
   border-collapse: collapse;
-  width: 50%;
+  width: 60%;
   margin-left: auto;
   margin-right: auto;
   border-radius: 1em;
@@ -72,8 +72,9 @@ body {
   height: 32vh;
 }
 
-.attributes_table, td, th {
-  border: 1px solid #CCF381;
+.table_token, td, th {
+  border: 0.1em solid #CCF381;
+  min-width: 20vh;
   padding: 8px;
 }
 

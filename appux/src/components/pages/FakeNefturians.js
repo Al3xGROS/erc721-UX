@@ -5,11 +5,9 @@ import NFTContract from '../contractJson/fakeNefturians.json';
 
 function FakeNefturians() {
     const navigate = useNavigate();
-
-    const [infos, setInfos] = useState ({
-        Name: "",
-        Price: 0,
-    });
+    const [name, setName] = useState();
+    const [price, setPrice] = useState();
+    const [priceETH, setPriceETH] = useState();
     const [isAccessible, setAccess] = useState(false);
     const [account, setAccount] = useState("");
 
@@ -22,17 +20,16 @@ function FakeNefturians() {
     async function getInfo() {
         let name = await contract.methods.name().call();
         let price = await contract.methods.tokenPrice().call();
-        setInfos ({
-            Name: name,
-            Price: String(price*1.00001),
-        })
+        setPrice(String(price * 1.00001));
+        setPriceETH(web3.utils.fromWei(String(price * 1.00001)));
+        setName(name);
     }
 
     async function buyToken() {
         const account = await window.ethereum.request({method: 'eth_requestAccounts'});
         let selectedAccount = account[0];
         setAccount(selectedAccount);
-        await contract.methods.buyAToken().send({from: selectedAccount, value: infos.Price}).then(console.log && setAccess(true))
+        await contract.methods.buyAToken().send({from: selectedAccount, value: price}).then(console.log && setAccess(true))
     }
 
     useEffect(() => {
@@ -40,28 +37,29 @@ function FakeNefturians() {
     })
 
     return (
-    <div className="page">
-        <div className="page_navbar">
-            <button className="navbar_button" onClick={() => navigate("/")}>Home</button>
-            <button className="navbar_button" onClick={() => navigate("/chain-info")}>ChainInfo</button>
-            <button className="navbar_button" onClick={() => navigate("/fakeBayc")}>FakeBayc</button>
-            <button className="navbar_button" onClick={() => navigate("/fakeNefturians")}>FakeNefturians</button>
-            <button className="navbar_button" onClick={() => navigate("/fakeMeebits")}>FakeMeebits</button>
+        <div className="page">
+            <div className="page_navbar">
+                <button className="navbar_button" onClick={() => navigate("/")}>Home</button>
+                <button className="navbar_button" onClick={() => navigate("/chain-info")}>ChainInfo</button>
+                <button className="navbar_button" onClick={() => navigate("/fakeBayc")}>FakeBayc</button>
+                <button className="navbar_button" onClick={() => navigate("/fakeNefturians")}>FakeNefturians</button>
+                <button className="navbar_button" onClick={() => navigate("/fakeMeebits")}>FakeMeebits</button>
+            </div>
+            <div className="page_header">
+                <h1>Fake Nefturians Page</h1>
+            </div>
+            <div className="page_body">
+                <p><b>Name:</b> {name}</p>
+                <p><b>Price:</b> {priceETH} Sep</p>
+            </div>
+            <div className="page_body">
+                <button className="page_button" onClick={buyToken}>Buy a token</button>
+                <br />
+                {isAccessible && (
+                    <Link to={`/fakeNefturians/${account}`}>Get token infos</Link>
+                )}
+            </div>
         </div>
-        <div className="page_header">
-            <h1>Fake Nefturians Page</h1>
-        </div>
-        <div className="page_body">
-            <p><b>Name:</b> {infos.Name}</p>
-            <p><b>Price:</b> {infos.Price}</p>
-        </div>
-        <div className="page_body">
-            <button className="page_button" onClick={buyToken}>Buy a token</button>
-            <br />
-            {isAccessible && (
-                <Link to={`/fakeNefturians/${account}`}>Get token infos</Link>
-            )}
-        </div>
-    </div>
-    )}
+    );
+}
 export default FakeNefturians;

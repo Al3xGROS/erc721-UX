@@ -7,7 +7,8 @@ import Error from "./pages/Error404";
 import FakeBayc from "./pages/FakeBayc";
 import FakeBaycTokenInfos from "./pages/FakeBaycTokenInfos";
 import FakeNefturians from "./pages/FakeNefturians"
-import FakeMeebit from "./pages/FakeMeebit"
+import FakeNefturiansTokenInfos from "./pages/FakeNefturiansTokenInfos";
+import FakeMeebits from "./pages/FakeMeebits"
 
 function AppRoutes() {
     return (
@@ -18,7 +19,8 @@ function AppRoutes() {
             <Route path="/fakeBayc" element={<FakeBayc />} />
             <Route path="/fakeBayc/:id" element={<FakeBaycTokenInfos />} />
             <Route path="/fakeNefturians" element={<FakeNefturians />} />
-            <Route path="/fakeMeebit" element={<FakeMeebit />} />
+            <Route path="/fakeNefturians/:account" element={<FakeNefturiansTokenInfos />} />
+            <Route path="/fakeMeebits" element={<FakeMeebits />} />
         </Routes>
     );
 }

@@ -68,7 +68,7 @@ function FakeBaycTokenInfos() {
             </div>
                 {isAccessible && (
                     <div className="page_body">
-                        <table className="attributes_table">
+                        <table className="table_token">
                             <thead>
                                 <tr>
                                     <th>Trait</th>
