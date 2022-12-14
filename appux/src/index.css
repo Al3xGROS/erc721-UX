@@ -3,7 +3,6 @@ body {
   padding: 0;
 }
 
-
 .page {
   background: linear-gradient( #4831D4, #CCF381);
   width: 100%;
@@ -13,7 +12,6 @@ body {
 }
 
 .page_navbar {
-  /* background-color: #CCF381; */
   width: 100%;
   height: 4vh;
   display: inline-flex;
@@ -27,12 +25,20 @@ body {
 }
 
 .page_body {
-  /* background-color: chartreuse; */
   padding: 10px 10px 10px 10px;
   color: #FBEAEB;
   text-align: center;
   height: fit-content;
 }
+
+/* .page_block {
+  margin: 4em auto;
+  padding: 3em auto;
+  border-radius: 2em;
+  border: 3px solid #CCF381;
+  width: 20%;
+  height: 15%;
+} */
 
 .page_button {
   background-color: #4831D4;
@@ -90,5 +96,6 @@ th {
   width: auto;
   height: calc(60vh - 100px);
 }
+
 
 

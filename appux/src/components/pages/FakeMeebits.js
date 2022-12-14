@@ -1,25 +1,52 @@
-import React, {useEffect, useState} from 'react';
+import React, { useState } from 'react';
 import Web3 from 'web3'
-import {Link, useNavigate} from "react-router-dom";
-import NFTContract from "../contractJson/fakeMeebits.json";
+import { useNavigate } from "react-router-dom";
+// import NFTContract1 from "../contractJson/fakeMeebits.json";
+import NFTContract from "../contractJson/fakeMeebitsClaimer.json";
+import sig from "../contractJson/signatures.json";
 
 function FakeMeebits() {
     const navigate = useNavigate();
     const [token, setToken] = useState();
-    const [isAccessible, setAccess] = useState();
+    const [isAccessible, setAccess] = useState(false);
 
     const web3 = new Web3(window.ethereum);
     const abi = NFTContract.abi;
-    const address = "0xD1d148Be044AEB4948B48A03BeA2874871a26003";
+    const address = "0x5341e225Ab4D29B838a813E380c28b0eFD6FBa55";
 
     var contract = new web3.eth.Contract(abi, address);
 
-    async function mintToken() {
+    async function claimToken() {
         let account = await window.ethereum.request({method: 'eth_requestAccounts'});
-        let supply = await contract.methods.totalSupply().call();
-        let token = supply - 1;
-        setToken(token);
         
+        if (await contract.methods.tokensThatWereClaimed(token).call() === true) {
+            alert("Token already claimed idiot!");
+            console.log("Token already claimed : ", token);
+        }
+        else {
+            const signature = sig[token].signature;
+            const result = await contract.methods.claimAToken(token, signature).send({from: account[0]});
+            if (result) {
+                setAccess(true);
+            } 
+            else {
+                alert("ERROR PLEASE TRY AGAIN");
+            }
+        }
+    }
+
+    async function checkToken() {
+        const result = await contract.methods.tokensThatWereClaimed(token).call();
+        if (result) {
+            alert("Token is claimable ! GO FOR IT");
+        }
+        else {
+            alert("Token is already claimed ! BAD LUCK");
+        }
+    }
+
+    const change = (event) => {
+        setToken(event.target.value);
     }
 
 
@@ -39,10 +66,22 @@ function FakeMeebits() {
             <div className="page_body">
                 <br/>
                 <br/>
-                <button className="page_button" onClick={mintToken}>Buy a token</button>
+                {/* <div className="page_block">
+                    <label>Chose the token you want to check</label>
+                    <input type="number" min="0" onChange={e => change(e)}></input>
+                    <br/>
+                    <button className="page_button" onClick={checkToken}>Check token</button>
+                </div> */}
+                <label>Chose the token you want to claim</label>
+                <br/>
+                <br/>
+                <input type="number" min="0" onChange={e => change(e)}></input>
+                <br/>
+                <br/>
+                <button className="page_button" onClick={claimToken}>Claim token</button>
                 <br />
                 {isAccessible && (
-                    <p>Token minted : {token}</p>
+                    <p>Token claimed : {token}</p>
                 )}
             </div>
             

@@ -1,4 +1,4 @@
-import { useParams, useNavigate } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Web3 from 'web3';
 import NFTContract from '../contractJson/fakeNefturians.json';
@@ -42,14 +42,16 @@ function FakeNefturiansTokenInfos() {
                     <tr>
                         <td>{token.name}</td>
                         <td>{token.description}</td>
+                        <td><a href={token.image} target="_blank">link</a></td>
                     </tr>
                 )
             }
         )
 
         setTab(DisplayData);
-
-        setAccess(true);
+        if (list.length !== 0) {
+            setAccess(true);
+        }
         
     }
 
@@ -80,6 +82,7 @@ function FakeNefturiansTokenInfos() {
                             <tr>
                                 <th>Name</th>
                                 <th>Description</th>
+                                <th>Image</th>
                             </tr>
                         </thead>
                         <tbody>
