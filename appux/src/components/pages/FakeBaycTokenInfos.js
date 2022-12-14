@@ -3,11 +3,10 @@ import { useState, useEffect } from 'react';
 import Web3 from 'web3';
 import NFTContract from '../contractJson/fakeBayc.json';
 import { IpfsImage } from 'react-ipfs-image';
+import Navbar from '../Navbar';
 
 
 function FakeBaycTokenInfos() {
-    const navigate = useNavigate();
-
     const [tokenId, setTokenId] = useState();
     const [attributes, setAttributes] = useState();
     const [image, setImage] = useState();
@@ -46,18 +45,11 @@ function FakeBaycTokenInfos() {
             setImage(infosJson.image);
             setAccess(true);
         }
-        
     }
 
     return (
         <div className="page">
-            <div className="page_navbar">
-                <button className="navbar_button" onClick={() => navigate("/")}>Home</button>
-                <button className="navbar_button" onClick={() => navigate("/chain-info")}>ChainInfo</button>
-                <button className="navbar_button" onClick={() => navigate("/fakeBayc")}>FakeBayc</button>
-                <button className="navbar_button" onClick={() => navigate("/fakeNefturians")}>FakeNefturians</button>
-                <button className="navbar_button" onClick={() => navigate("/fakeMeebits")}>FakeMeebits</button>
-            </div>
+            <Navbar/>
             <div className="page_header">
                 <h1>Fake Bayc Token Info</h1>
             </div>

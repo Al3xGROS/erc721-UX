@@ -2,9 +2,9 @@ import { Link, useParams, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Web3 from 'web3';
 import NFTContract from '../contractJson/fakeNefturians.json';
+import Navbar from '../Navbar';
 
 function FakeNefturiansTokenInfos() {
-    const navigate = useNavigate();
     const [user, setUser] = useState();
     const [tab, setTab] = useState();
     const [isAccessible, setAccess] = useState(false);
@@ -57,13 +57,7 @@ function FakeNefturiansTokenInfos() {
 
     return (
         <div className="page">
-            <div className="page_navbar">
-                <button className="navbar_button" onClick={() => navigate("/")}>Home</button>
-                <button className="navbar_button" onClick={() => navigate("/chain-info")}>ChainInfo</button>
-                <button className="navbar_button" onClick={() => navigate("/fakeBayc")}>FakeBayc</button>
-                <button className="navbar_button" onClick={() => navigate("/fakeNefturians")}>FakeNefturians</button>
-                <button className="navbar_button" onClick={() => navigate("/fakeMeebits")}>FakeMeebits</button>
-            </div>
+            <Navbar/>
             <div className="page_header">
                 <h1>Fake Nefturians Token Info</h1>
                 <br/>

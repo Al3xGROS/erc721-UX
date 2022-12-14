@@ -1,10 +1,10 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import Web3 from 'web3'
-import {Link, useNavigate} from "react-router-dom";
+import { Link } from "react-router-dom";
 import NFTContract from '../contractJson/fakeNefturians.json';
+import Navbar from '../Navbar';
 
 function FakeNefturians() {
-    const navigate = useNavigate();
     const [name, setName] = useState();
     const [price, setPrice] = useState();
     const [priceETH, setPriceETH] = useState();
@@ -38,13 +38,7 @@ function FakeNefturians() {
 
     return (
         <div className="page">
-            <div className="page_navbar">
-                <button className="navbar_button" onClick={() => navigate("/")}>Home</button>
-                <button className="navbar_button" onClick={() => navigate("/chain-info")}>ChainInfo</button>
-                <button className="navbar_button" onClick={() => navigate("/fakeBayc")}>FakeBayc</button>
-                <button className="navbar_button" onClick={() => navigate("/fakeNefturians")}>FakeNefturians</button>
-                <button className="navbar_button" onClick={() => navigate("/fakeMeebits")}>FakeMeebits</button>
-            </div>
+            <Navbar/>
             <div className="page_header">
                 <h1>Fake Nefturians Page</h1>
             </div>

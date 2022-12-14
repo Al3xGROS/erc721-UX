@@ -4,9 +4,9 @@ import { useNavigate } from "react-router-dom";
 // import NFTContract1 from "../contractJson/fakeMeebits.json";
 import NFTContract from "../contractJson/fakeMeebitsClaimer.json";
 import sig from "../contractJson/signatures.json";
+import Navbar from '../Navbar';
 
 function FakeMeebits() {
-    const navigate = useNavigate();
     const [token, setToken] = useState();
     const [isAccessible, setAccess] = useState(false);
 
@@ -35,31 +35,13 @@ function FakeMeebits() {
         }
     }
 
-    async function checkToken() {
-        const result = await contract.methods.tokensThatWereClaimed(token).call();
-        if (result) {
-            alert("Token is claimable ! GO FOR IT");
-        }
-        else {
-            alert("Token is already claimed ! BAD LUCK");
-        }
-    }
-
     const change = (event) => {
         setToken(event.target.value);
     }
 
-
-
     return (
         <div className="page">
-            <div className="page_navbar">
-                <button className="navbar_button" onClick={() => navigate("/")}>Home</button>
-                <button className="navbar_button" onClick={() => navigate("/chain-info")}>ChainInfo</button>
-                <button className="navbar_button" onClick={() => navigate("/fakeBayc")}>FakeBayc</button>
-                <button className="navbar_button" onClick={() => navigate("/fakeNefturians")}>FakeNefturians</button>
-                <button className="navbar_button" onClick={() => navigate("/fakeMeebits")}>FakeMeebits</button>
-            </div>
+            <Navbar/>
             <div className="page_header">
                 <h1>Fake Meebits Page</h1>
             </div>
